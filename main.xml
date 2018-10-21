@@ -4,6 +4,8 @@
         <!-- If we don’t know where is our user from, we need to ask about that -->
         <context if="empty($UserCity)">
             <output value="Where are you from?"/>
+            <pattern name="City" value="(Moscow*|Chicago*)"/> <!-- Custom pattern -->
+
             <input pattern="$City">
                 <context id="weather"/>
                 <!-- Jump to the "weather" context now -->
@@ -12,6 +14,7 @@
 
         <context id="weather">
             <!-- Does some weather gathering stuff -->
+            <output value="Weather is requested to server..."/>
         </context>
     </input>
     <input pattern="(hello|hi) *">
